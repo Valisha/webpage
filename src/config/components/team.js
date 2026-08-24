@@ -191,7 +191,7 @@ const exec = {
       avatar: '/team/samanthaklasfeld.jpeg',
       // Social links
       social: {
-        website: 'http://sklasfeld.github.io/',
+        website: 'https://sklasfeld.netlify.app/',
         // twitter: '#',
         // instagram: '#',
         // facebook: '#',
@@ -200,19 +200,20 @@ const exec = {
         bluesky: 'https://bsky.app/profile/sklasfeld.bsky.social',
       },
     },
-    // Aysheh Alrfooh
+    // Marissa Sumathipala
     {
-      name: 'Aysheh Alrfooh',
+      name: 'Marissa Sumathipala',
       // Namelink: Member's Personal Website
-      nameLink: 'https://www.linkedin.com/in/aysheh-alrfooh/',
+      nameLink: 'https://www.linkedin.com/in/marissa-sumathipala',
       // Job Title
       title: 'Career Mentorship Committee Co-chair',
       // Leadership team member Photo
-      avatar: '/team/aysheh.jpg',
+      avatar: '/team/MarissaSumathipala.jpg',
       // Social links
       social: {
-        linkedin: 'https://www.linkedin.com/in/aysheh-alrfooh/',
-        github: 'https://github.com/Alrfooh-Aysheh',
+        // website: '#',
+        linkedin: 'https://www.linkedin.com/in/marissa-sumathipala/',
+        //github: '#',
       },
     },
     // Peili Zhang
@@ -230,9 +231,9 @@ const exec = {
         //github: '#',
       },
     },
-    // Emily Lachtara
+    // Emily Brodd
     {
-      name: 'Emily Lachtara',
+      name: 'Emily Brodd',
       nameLink: 'https://www.linkedin.com/in/emily-lachtara/',
       title: 'Sponsorship Committee Co-chair',
       avatar: '/team/emily_lachtara.jpeg',
@@ -307,27 +308,6 @@ const exec = {
         linkedin: 'https://www.linkedin.com/in/saba-nafees',
         //github: '#',
         bluesky: 'https://bsky.app/profile/snafees314.bsky.social',
-      },
-    },
-    // Sharvari Narendra
-    {
-      // Name: First and last name
-      name: 'Sharvari Narendra',
-      // Namelink: Member's Personal Website
-      nameLink: 'https://www.linkedin.com/in/sharvarinarendra',
-      // Job Title
-      title: 'Podcast Committee Co-chair',
-      // Leadership team member Photo
-      avatar: '/team/Sharvari_Narendra.jpg',
-      // Social links
-      social: {
-        //website: '#',
-        // twitter: '#',
-        // instagram: '#',
-        // facebook: '#',
-        linkedin: 'https://www.linkedin.com/in/sharvarinarendra',
-        //github: '#',
-        bluesky: 'https://bsky.app/profile/sharvarinarendra.bsky.social',
       },
     },
   ],
@@ -499,18 +479,6 @@ const team = {
         linkedin: 'https://www.linkedin.com/in/masoome-rezaei',
       },
     },
-    // Marissa Sumathipala
-    {
-      name: 'Marissa Sumathipala',
-      nameLink: 'https://www.linkedin.com/in/marissa-sumathipala',
-      title: 'Career Mentorship Committee',
-      avatar: '/team/MarissaSumathipala.jpg',
-      social: {
-        // website: '#',
-        linkedin: 'https://www.linkedin.com/in/marissa-sumathipala/',
-        //github: '#',
-      },
-    },
     // Vishwa Talati
     {
       name: 'Vishwa Talati',
@@ -536,6 +504,28 @@ const team = {
         // facebook: '#',
         linkedin: 'http://linkedin.com/in/ozgeevrimtasdemiryilmaz',
         // github: '#',
+      },
+    },
+    // Aysheh Alrfooh
+    {
+      name: 'Aysheh Alrfooh',
+      nameLink: 'https://www.linkedin.com/in/aysheh-alrfooh/',
+      title: 'Career Mentorship Committee',
+      avatar: '/team/aysheh.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/aysheh-alrfooh/',
+        github: 'https://github.com/Alrfooh-Aysheh',
+      },
+    },
+    // Sharvari Narendra
+    {
+      name: 'Sharvari Narendra',
+      nameLink: 'https://www.linkedin.com/in/sharvarinarendra',
+      title: 'Podcast Committee',
+      avatar: '/team/Sharvari_Narendra.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/sharvarinarendra',
+        bluesky: 'https://bsky.app/profile/sharvarinarendra.bsky.social',
       },
     },
   ],

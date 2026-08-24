@@ -1,4 +1,4 @@
-Add a new event to the BWIB website. The event will be created as a Markdown file in `src/content/meetups/YYYY/`.
+Add a new event to the BWIB website. The event will be created as a Markdown file in `src/content/meetups/YYYY/`. This scaffolds the frontmatter and file; use the `edit-event` skill to write or revise the event description body.
 
 ## Before You Start — Set Up Luma First (if using Luma for registration)
 
@@ -43,7 +43,7 @@ Ask the user for the following. Collect all required fields before proceeding. U
 - `title` — name of the event
 - `dateTime` — start date and time in New York time, format `YYYY-MM-DDTHH:mm` (e.g. `2026-09-15T18:00`). No timezone offset — it is applied automatically.
 - `location` — one or more address lines (e.g. `["123 Main St", "Boston, MA"]`)
-- `image.src` — path to the event image (e.g. `/photos/my-event.jpg`)
+- `image.src` — path to the event image: a photo of the event goes in `public/photos/{YYYY}/` matching the event's year (e.g. `/photos/2026/my-event.jpg`); a sponsor/partner organization's logo goes in `public/sponsors/` instead (e.g. `/sponsors/acme-logo.png`)
 - `image.alt` — alt text describing the image's _purpose_, not its appearance. Do not include the words "image" or "photo".
 - `tags` — list of tags (can be an empty list `[]`)
 
@@ -77,7 +77,7 @@ title: 'TITLE'
 dateTime: 'YYYY-MM-DDTHH:mm'
 endDate: 'YYYY-MM-DDTHH:mm'
 image:
-  src: '/photos/...'
+  src: '/photos/{YYYY}/...' # or '/sponsors/...' for a sponsor/partner logo
   alt: '...'
 location:
   - '...'
@@ -92,28 +92,10 @@ partnerOrganization: '...'
 cost: 10
 slug: 'event-name-month-year'
 ---
-MARKDOWN BODY (event description goes here — see prompts below)
+MARKDOWN BODY (event description goes here)
 ```
 
-When writing the markdown body, ask the user for the following and incorporate the answers into the description:
-
-**What attendees will get out of it:**
-
-- What will attendees learn, experience, or walk away with?
-- Who is this event for? (e.g. students, early-career professionals, anyone in bioinformatics)
-
-**Logistics (for in-person events):**
-
-- How do attendees get there? Include public transit directions (T stop, bus lines), parking notes, or building entrance instructions if the venue is hard to find.
-- Is there a check-in process, name badge, or anything to look for at the door?
-
-**What to prepare beforehand:**
-
-- Anything attendees should bring (laptop, notebook, student ID for discounts, etc.)?
-- Any pre-reading, pre-registration steps, or software to install ahead of time?
-- Any dietary or accessibility accommodations to be aware of?
-
-Omit any of these sections if the information is not applicable or not yet known. Don't add placeholder text — only write what the user confirms.
+For the body content — what attendees will get out of it, logistics, what to prepare — use the `edit-event` skill.
 
 ## Step 4 — Run Prettier
 
@@ -128,9 +110,11 @@ Print the following commands for the user to run (do not run them automatically)
 ```
 git checkout -b add-event-YYYY-MM-DD
 git add src/content/meetups/{YYYY}/{YYYYMMDD}_event.md
-# If you uploaded an image:
-git add public/photos/<your_image_name>
+# If you uploaded an event photo:
+git add public/photos/{YYYY}/<your_image_name>
+# If you uploaded a sponsor/partner logo instead:
+git add public/sponsors/<your_image_name>
 git push -u origin add-event-YYYY-MM-DD
 ```
 
-Remind the user to upload their event image to `public/photos/` before committing (see Image Organization in README.md).
+Remind the user to upload their image before committing: a photo of the event goes in `public/photos/{YYYY}/`, a sponsor/partner logo goes in `public/sponsors/` (see Image Organization in README.md).

@@ -1,0 +1,29 @@
+# Rapid-fire Q&A for the iMessage-style chat widget at the bottom of
+# 20260821_post_Isha.mdx. Imported via `?raw` and passed to
+# ~/components/blog/ImessageChat.astro as the `conversationYaml` prop.
+- q: 'Are you ready for a rapid fire? 👀'
+  a: 'Haha yes...Let’s do it!!'
+
+- q: 'Early bird or Night owl?'
+  a: 'Oh, absolutely an early bird ☀️'
+
+- q: 'On-site, Hybrid or WFH?'
+  a: 'Team WFH 🙌'
+
+- q: '☕ Coffee or tea?'
+  a: 'Neither 😅 I’m caffeine-sensitive!'
+
+- q: 'One bioinformatics tool you cannot live without?'
+  a: 'Samtools, hands down.'
+
+- q: '💻 Python or R?'
+  a: 'R, no hesitation.'
+
+- q: '🤖 Claude vs. ChatGPT?'
+  a: 'Claude!!! 😂'
+
+- q: '🧠 Science fangirl moment?'
+  a: 'Joshua Starmer, StatQuest 🤓'
+
+- q: 'Productivity hack?'
+  a: 'Eat the frog in the morning. Always :)'

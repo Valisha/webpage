@@ -8,6 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check whether a build is actually needed
+        id: check
+        run: |
+          result=$(node scripts/needs-daily-build.mjs)
+          echo "needs_build=$result" >> "$GITHUB_OUTPUT"
+
       - name: Trigger Netlify build
+        if: steps.check.outputs.needs_build == 'true' || github.event_name == 'workflow_dispatch'
         run: |
           curl -X POST -d '{}' https://api.netlify.com/build_hooks/69ecc74de043a441ba3ace85

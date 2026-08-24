@@ -10,6 +10,7 @@ This document describes the complete color system for the Boston Women in Bioinf
 - [Usage Examples](#usage-examples)
 - [How to Update Colors](#how-to-update-colors)
 - [Dark Mode](#dark-mode)
+- [Categorical Color vs. Rhythm Color](#categorical-color-vs-rhythm-color)
 
 ---
 
@@ -23,6 +24,8 @@ This document describes the complete color system for the Boston Women in Bioinf
 | **Secondary**   | Dark Blue  | Dark Blue  | `rgb(1 84 207)` / `#0154CF`   | Secondary actions, hover states                                                                         |
 | **Accent**      | Purple     | Purple     | `rgb(109 40 217)` / `#6D28D9` | Highlights, special elements                                                                            |
 | **Accent Warm** | Orange     | Lime Green | `#e36d1d` / `#84cc16`         | Warm highlights, CTAs, featured content - automatically switches between orange (light) and lime (dark) |
+
+**These four brand colors are text/border/icon colors, not section background colors.** Across the codebase they're used as `text-*`/`border-*` (76 and 42 uses respectively) and as small solid-fill icon badges/avatars — never as a full-width `bg-*` fill on their own. For large surfaces (page sections, cards, callouts), use a **pastel tint** of the relevant hue instead — `bg-blue-50`/`bg-purple-50`/`bg-orange-50` in light mode, `dark:bg-slate-800` (or a matching `-900`/`-950` shade) in dark mode. This pastel-tint approach is used 98 times across the site and is the actual "block color" language — see [Homepage Section Backgrounds](#homepage-section-backgrounds) below for a concrete example.
 
 ### Sponsorship Tier Colors
 
@@ -55,7 +58,7 @@ This document describes the complete color system for the Boston Women in Bioinf
 
 ## Design Tokens Reference
 
-All colors are defined in [`src/components/CustomStyles.astro`](src/components/CustomStyles.astro) as CSS custom properties.
+All colors are defined in [`src/components/common/CustomStyles.astro`](src/components/common/CustomStyles.astro) as CSS custom properties.
 
 ### Brand Colors
 
@@ -154,7 +157,7 @@ All design tokens are exposed as Tailwind utility classes via [`tailwind.config.
 <p class="text-primary">Primary blue text</p>
 <p class="text-secondary">Secondary dark blue text</p>
 <p class="text-accent">Accent purple text</p>
-<p class="text-accent-warm">Warm coral/pink text</p>
+<p class="text-accent-warm">Warm orange text</p>
 
 <!-- Background -->
 <div class="bg-primary">Primary blue background</div>
@@ -223,7 +226,7 @@ All design tokens are exposed as Tailwind utility classes via [`tailwind.config.
 <button class="bg-accent hover:bg-purple-700 text-white px-6 py-3 rounded-full"> Special Action </button>
 
 <!-- Warm Accent Button (Warm tone - featured CTA) -->
-<!-- Automatically coral in light mode, lime green in dark mode -->
+<!-- Automatically orange in light mode, lime green in dark mode -->
 <button class="bg-accent-warm hover:bg-red-500 dark:hover:bg-lime-600 text-gray-900 px-6 py-3 rounded-full">
   Register Now
 </button>
@@ -311,13 +314,32 @@ All design tokens are exposed as Tailwind utility classes via [`tailwind.config.
 </style>
 ```
 
+### Example 7: Homepage Section Backgrounds
+
+`src/pages/index.astro`'s top-level `<section>` blocks rotate through three pastel background tints, in order, so every section is visually separated from its neighbor as a plain rhythm device:
+
+```astro
+<!-- 1st in rotation -->
+<section class="bg-white dark:bg-dark">...</section>
+
+<!-- 2nd in rotation -->
+<section class="bg-gray-50 dark:bg-slate-800">...</section>
+
+<!-- 3rd in rotation -->
+<section class="bg-blue-50 dark:bg-blue-950">...</section>
+
+<!-- repeats: white, gray-50, blue-50, white, gray-50, blue-50, ... -->
+```
+
+See `AGENTS.md` Local Norm 24 for the full rule, including guidance for adding/reordering sections.
+
 ---
 
 ## How to Update Colors
 
 ### Changing an Existing Color
 
-1. Open [`src/components/CustomStyles.astro`](src/components/CustomStyles.astro)
+1. Open [`src/components/common/CustomStyles.astro`](src/components/common/CustomStyles.astro)
 2. Find the CSS variable you want to change (e.g., `--aw-color-primary`)
 3. Update the color value in **both** `:root` (light mode) and `.dark` (dark mode) sections if applicable
 4. Save the file - the change will apply site-wide automatically
@@ -334,7 +356,7 @@ All design tokens are exposed as Tailwind utility classes via [`tailwind.config.
 
 ### Adding a New Color
 
-1. **Add the CSS variable** in [`src/components/CustomStyles.astro`](src/components/CustomStyles.astro):
+1. **Add the CSS variable** in [`src/components/common/CustomStyles.astro`](src/components/common/CustomStyles.astro):
 
    ```css
    :root {
@@ -485,9 +507,34 @@ The warm accent color system was designed to:
 4. Create hierarchy: warm = featured/urgent, cool = standard/professional
 5. Align with themes of diversity and community
 
-**Automatic Color Switching**: The `accent-warm` design token automatically switches from coral (light mode) to lime green (dark mode) via CSS custom properties. You don't need to add `dark:` variants manually - just use `bg-accent-warm` and it works!
+**Automatic Color Switching**: The `accent-warm` design token automatically switches from orange (light mode) to lime green (dark mode) via CSS custom properties. You don't need to add `dark:` variants manually - just use `bg-accent-warm` and it works!
 
 **Best Practice**: Use warm accent sparingly (10-20% of accent usage) to maintain its special emphasis effect.
+
+---
+
+## Categorical Color vs. Rhythm Color
+
+Color plays two different roles on the site, and picking the wrong one for a given element is a common mistake.
+
+### Categorical color — small, parallel elements
+
+Use a rotating multi-hue palette (blue, green, purple, pink, orange, teal, etc.) when color's job is to let the eye tell several small, same-level items apart, with each item consistently paired to "its" hue.
+
+**Examples**:
+
+- `upskilling.astro` resource cards: each learning category (`bioinformatics`, `biology`, `coding`, `machine-learning`, `math`, `professional-development`) gets its own `border-*-500` / `bg-*-50` pair, applied consistently across every card in that category.
+- `survey-results.astro` hero stats: each stat number gets a distinct `text-*-600` hue (`text-blue-600`, `text-pink-600`, `text-green-600`, `text-purple-600`, `text-teal-500`) so the metrics read as separate things at a glance.
+- `survey-results.astro` Chart.js dashboard palette (`PALETTE.light` / `PALETTE.dark`) — one hue per data series, for the same reason.
+
+### Rhythm color — large, sequential sections
+
+Use a small, muted, fixed-order rotation (see [Homepage Section Backgrounds](#example-7-homepage-section-backgrounds)) when color's only job is to separate consecutive full-width sections. There's nothing to categorize at this scale, so hue carries no meaning — only "different from the section above/below" matters.
+
+### Which one applies?
+
+- Is this one of several parallel, same-kind items that benefit from being told apart (cards in a grid, stats in a row, series in a chart)? → **categorical color**.
+- Is this a large section in a vertical page stack where the only goal is visual separation from its neighbor? → **rhythm color** (muted rotation only — no saturated brand-color fills).
 
 ---
 
@@ -511,7 +558,7 @@ When choosing or updating colors, ensure sufficient contrast ratios:
 
 ### Key Files
 
-1. **[`src/components/CustomStyles.astro`](src/components/CustomStyles.astro)** - All CSS custom properties (design tokens)
+1. **[`src/components/common/CustomStyles.astro`](src/components/common/CustomStyles.astro)** - All CSS custom properties (design tokens)
 2. **[`tailwind.config.js`](tailwind.config.js)** - Tailwind color mappings
 3. **[`src/styles/global.css`](src/styles/global.css)** - Global CSS classes (`.gold`, `.silver`, etc.)
 

@@ -3,7 +3,7 @@ title: 'Boston Women in Bioinformatics Family Day at Danehy Park'
 dateTime: '2026-08-23T10:00'
 endDate: '2026-08-23T13:00'
 image:
-  src: '/photos/BWiB Family Event.png'
+  src: '/photos/2026/BWiB Family Event.png'
   alt: 'Boston Women in Bioinformatics Family Day at Danehy Park'
 location:
   - 'Danehy Park'

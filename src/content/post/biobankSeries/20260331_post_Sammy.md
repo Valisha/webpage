@@ -182,7 +182,7 @@ cohort_df
 
 In the above example, we are only exporting one measurement from the clinical table `measurement`. However, you will likely need to export multiple data fields from a single clinical table. Unfortunately, the query grows linearly with the number of measurements. A UNION_ALL approach followed by a pivot will make your query a lot cleaner. The query below exports a cohort table with gender, systolic blood pressure, and BMI (Concept ID:3038553).
 
-```{python}
+```python
 cohort_query = f'''
 WITH measurements AS (
   -- Stack all measurements into one table, keeping only the most recent per person

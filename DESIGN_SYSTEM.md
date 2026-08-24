@@ -17,7 +17,7 @@ This document defines the complete design system for the Boston Women in Bioinfo
 
 ## Design Tokens
 
-All design tokens are defined in [`src/components/CustomStyles.astro`](src/components/CustomStyles.astro). For detailed color documentation, see [COLOR_PALETTE.md](COLOR_PALETTE.md).
+All design tokens are defined in [`src/components/common/CustomStyles.astro`](src/components/common/CustomStyles.astro). For detailed color documentation, see [COLOR_PALETTE.md](COLOR_PALETTE.md).
 
 ### Color Strategy
 
@@ -231,14 +231,16 @@ All text uses **Inter Variable** font.
 
 Use responsive text sizing with Tailwind classes:
 
-| Element             | Mobile | Tablet | Desktop | Classes                            |
-| ------------------- | ------ | ------ | ------- | ---------------------------------- |
-| **H1 (Hero)**       | 30px   | 36px   | 48px    | `text-3xl sm:text-4xl md:text-5xl` |
-| **H2 (Section)**    | 30px   | 36px   | -       | `text-3xl md:text-4xl`             |
-| **H3 (Card Title)** | 20px   | 24px   | -       | `text-xl md:text-2xl`              |
-| **Body Large**      | 16px   | 18px   | 20px    | `text-base sm:text-lg md:text-xl`  |
-| **Body**            | 14px   | 16px   | -       | `text-sm md:text-base`             |
-| **Small**           | 12px   | 14px   | -       | `text-xs md:text-sm`               |
+| Element             | Mobile | Tablet | Desktop | Classes                                        |
+| ------------------- | ------ | ------ | ------- | ---------------------------------------------- |
+| **H1 (Hero)**       | 30px   | 36px   | 48px    | `text-3xl sm:text-4xl md:text-5xl`             |
+| **H2 (Section)**    | 30px   | 36px   | -       | `text-3xl md:text-4xl`                         |
+| **H3 (Card Title)** | 20px   | 24px   | -       | `text-xl md:text-2xl`                          |
+| **Body Large**      | 16px   | 18px   | 20px    | `text-base sm:text-lg md:text-xl`              |
+| **Body**            | 14px   | 16px   | -       | `text-sm md:text-base`                         |
+| **Small**           | 12px   | 14px   | -       | `text-xs md:text-sm`                           |
+| **Extra Small**     | 10px   | -      | -       | `text-xxs` (custom, see `tailwind.config.js`)  |
+| **Micro**           | 8px    | -      | -       | `text-xxxs` (custom, see `tailwind.config.js`) |
 
 ### Font Weights
 
@@ -288,7 +290,7 @@ The Button component uses the **primary** color by default (`#0161EF` blue). For
 **Featured/Warm Accent Button**:
 
 ```astro
-<!-- Automatically coral in light mode, lime green in dark mode -->
+<!-- Automatically orange in light mode, lime green in dark mode -->
 <Button
   variant="primary"
   href="/register"
@@ -297,7 +299,7 @@ The Button component uses the **primary** color by default (`#0161EF` blue). For
 />
 ```
 
-**Note**: The `bg-accent-warm` class automatically switches between coral (`#FF6B6B`) in light mode and lime green (`#84cc16`) in dark mode. You only need to specify hover states for each mode.
+**Note**: The `bg-accent-warm` class automatically switches between orange (`#e36d1d`) in light mode and lime green (`#84cc16`) in dark mode. You only need to specify hover states for each mode.
 
 **When to use warm accent buttons**:
 
@@ -605,7 +607,7 @@ import Button from '~/components/ui/Button.astro';
 
 When making changes to the design system:
 
-1. **Update tokens** in `src/components/CustomStyles.astro`
+1. **Update tokens** in `src/components/common/CustomStyles.astro`
 2. **Update documentation** in this file and `COLOR_PALETTE.md`
 3. **Test across the site** to ensure consistency
 4. **Build the site** to verify no errors: `npm run build`

@@ -1,0 +1,1085 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+import Banner from '~/components/common/Banner.astro';
+import WIBLogo from '~/assets/images/WIB_Logo.jpg';
+import { SITE } from '~/config/site/config.js';
+
+const metadata = {
+  title: `Survey Results - ${SITE.title}`,
+  description:
+    'Workforce demographics, career trajectories, compensation, and community engagement data from our survey of bioinformaticians across the United States.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Page Header -->
+  <section class="py-12 md:py-20 text-center">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight text-default dark:text-slate-100">
+        Bioinformaticians in the US
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-muted dark:text-slate-200 mb-2">
+        A Survey of Workforce Demographics, Career Trajectories &amp; Compensation
+      </p>
+      <p class="text-sm text-muted dark:text-slate-200">260 respondents &nbsp;·&nbsp; Fully anonymous</p>
+    </div>
+  </section>
+
+  <!-- Fact Banner -->
+  <Banner id="survey-fact-banner" linkHref="https://forms.gle/8fRqmTBeJCcFaLFo8" linkText="Add Your Data">
+    <strong>Did you know?</strong> Bioinformatician salaries range from under $80K to over $200K. Where do you fit?
+  </Banner>
+
+  <!-- Hero Stats -->
+  <div class="py-12 px-6 text-center relative overflow-hidden">
+    <div class="survey-hero-bg absolute inset-0 opacity-5"></div>
+    <div class="relative mx-auto max-w-6xl">
+      <Image
+        src={WIBLogo}
+        alt="Boston Women in Bioinformatics logo"
+        width="192"
+        height="192"
+        class="w-48 h-48 object-contain block mx-auto mb-4 rounded-lg"
+      />
+      <span
+        class="inline-block bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-primary dark:text-blue-200 text-xs font-semibold tracking-widest uppercase py-1 px-3.5 rounded-full mb-5"
+      >
+        Boston Women in Bioinformatics
+      </span>
+      <div class="flex justify-center flex-wrap gap-5 mb-8">
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 px-6 min-w-[130px]"
+        >
+          <span class="block text-3xl font-extrabold text-blue-600 dark:text-slate-200">260</span>
+          <span class="block text-xs text-muted dark:text-slate-200 mt-0.5">Total Responses</span>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 px-6 min-w-[130px]"
+        >
+          <span class="block text-3xl font-extrabold text-pink-600 dark:text-slate-200">80.4%</span>
+          <span class="block text-xs text-muted dark:text-slate-200 mt-0.5">Identify as Female</span>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 px-6 min-w-[130px]"
+        >
+          <span class="block text-3xl font-extrabold text-green-600 dark:text-slate-200">69%</span>
+          <span class="block text-xs text-muted dark:text-slate-200 mt-0.5">Currently Employed</span>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 px-6 min-w-[130px]"
+        >
+          <span class="block text-3xl font-extrabold text-purple-600 dark:text-slate-200">29</span>
+          <span class="block text-xs text-muted dark:text-slate-200 mt-0.5">States Represented</span>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 px-6 min-w-[130px]"
+        >
+          <span class="block text-3xl font-extrabold text-teal-500 dark:text-slate-200">44%</span>
+          <span class="block text-xs text-muted dark:text-slate-200 mt-0.5">PhD or Higher</span>
+        </div>
+      </div>
+      <Button
+        variant="primary"
+        href="https://forms.gle/8fRqmTBeJCcFaLFo8"
+        target="_blank"
+        rel="noopener"
+        text="Take the Survey and Add Your Voice"
+        icon="tabler:edit"
+        class="bg-accent hover:bg-gray-700 dark:bg-gray-200 dark:hover:bg-slate-100 text-white dark:text-slate-900 border-accent dark:border-white"
+      />
+      <p class="mt-3 text-xs text-muted dark:text-slate-200">Takes ~3 minutes &nbsp;·&nbsp; Fully anonymous</p>
+    </div>
+  </div>
+
+  <!-- Gate Overlay (shown when locked) -->
+  <div id="survey-gate" class="hidden">
+    <div class="mx-auto max-w-2xl px-4 py-16 text-center">
+      <div class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-2xl p-10 shadow-lg">
+        <div
+          class="w-16 h-16 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-3xl mx-auto mb-6"
+        >
+          🔒
+        </div>
+        <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-3">Add Your Data to Unlock Results</h2>
+        <p class="text-muted dark:text-slate-200 mb-2">
+          This dashboard is built from community contributions. To keep the data current and inclusive, we ask that you
+          share your own information before viewing the full results.
+        </p>
+        <p class="text-sm text-muted dark:text-slate-200 mb-8">Takes ~3 minutes &nbsp;·&nbsp; Fully anonymous</p>
+        <Button
+          variant="primary"
+          href="https://forms.gle/8fRqmTBeJCcFaLFo8"
+          target="_blank"
+          rel="noopener"
+          text="Take the Survey"
+          icon="tabler:edit"
+          class="bg-accent hover:bg-gray-700 dark:bg-gray-200 dark:hover:bg-slate-100 text-white dark:text-slate-900 border-accent dark:border-white"
+        />
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-slate-700">
+          <p class="text-xs text-muted dark:text-slate-200 mb-3">Already submitted? Click below to unlock.</p>
+          <button
+            id="unlock-btn"
+            class="text-sm font-semibold text-primary dark:text-sky-300 hover:underline bg-transparent border-none cursor-pointer"
+          >
+            I've already submitted my data →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard (hidden until unlocked) -->
+  <div id="survey-dashboard" class="hidden">
+    <!-- Sticky Tab Nav -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-gray-300 dark:border-slate-700 shadow-sm">
+      <div class="flex overflow-x-auto scrollbar-none max-w-6xl mx-auto px-4">
+        <button
+          class="survey-tab-btn active flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-demographics', this)">Demographics</button
+        >
+        <button
+          class="survey-tab-btn flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-education', this)">Education</button
+        >
+        <button
+          class="survey-tab-btn flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-career', this)">Career &amp; Compensation</button
+        >
+        <button
+          class="survey-tab-btn flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-companies', this)">Companies</button
+        >
+        <button
+          class="survey-tab-btn flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-expertise', this)">Expertise</button
+        >
+        <button
+          class="survey-tab-btn flex-shrink-0 py-3.5 px-5 text-sm lg:text-base xl:text-lg font-semibold text-muted dark:text-slate-200 border-b-[3px] border-transparent bg-transparent cursor-pointer transition-colors whitespace-nowrap"
+          onclick="showSurveySection('s-community', this)">Community</button
+        >
+      </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="bg-gray-50 dark:bg-slate-950 min-h-screen">
+      <div class="mx-auto max-w-6xl px-4 md:px-6 py-8 md:py-12">
+        <!-- DEMOGRAPHICS -->
+        <section class="survey-section" id="s-demographics">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Demographics</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Gender identity and geographic distribution of survey respondents.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-7">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                👩
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">209</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Identify as Female
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                👨
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">48</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Identify as Male
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                📍
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">29</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  States Represented
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                🏙️
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">65%</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Based in Massachusetts
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Gender Identity
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-48"><canvas id="genderChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Geographic Distribution
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                Top states represented (n = 255)
+              </div>
+              <ul class="s-bar-list list-none flex flex-col gap-2.5" id="locationBars"></ul>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Massachusetts dominates:</strong> 165 of 255 respondents (65%) are based in MA, reflecting the survey's
+              Boston roots.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>National reach:</strong> Respondents span 29 states including CA, NY, TX, NJ, CT, PA, GA, MD, and DE.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Highly female:</strong> 80.4% of respondents identify as female, consistent with the community's focus
+              on women in bioinformatics.
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="survey-section hidden" id="s-education">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Education</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Highest degree attained, field of study, graduation era, and degree origin.
+          </p>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Highest Level of Education
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-64"><canvas id="educationChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Degree Concentration
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-80"><canvas id="concentrationChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Graduation Era
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                n = 257 — graduation era for highest degree
+              </div>
+              <div class="relative h-48"><canvas id="gradYearChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Degree Origin
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-48"><canvas id="degreeOriginChart"></canvas></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Masters &amp; PhD nearly even:</strong> 102 Masters vs 103 PhDs — the community spans both research
+              and applied tracks.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Recent graduates:</strong> 62% earned their highest degree between 2020–2025, reflecting a young and
+              growing workforce.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>International talent:</strong> 20% received their degree outside the US, highlighting the global nature
+              of bioinformatics talent.
+            </div>
+          </div>
+        </section>
+
+        <!-- CAREER -->
+        <section class="survey-section hidden" id="s-career">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Career &amp; Compensation</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Employment status, work arrangement, experience levels, and salary distribution.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-7">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                ✅
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">179</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Currently Employed
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                🔍
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">81</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Job Seeking
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                🏆
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">24%</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  In Leadership Roles
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-5 flex items-center gap-4 shadow-sm"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                💼
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-default dark:text-slate-100 leading-none">45%</div><div
+                  class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mt-1"
+                >
+                  Hybrid Work
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Employment Status
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-48"><canvas id="employmentChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Work Arrangement (Employed)
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 179</div>
+              <div class="relative h-48"><canvas id="jobTypeChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Years of Post-Degree Experience
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 260</div>
+              <div class="relative h-64"><canvas id="experienceChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Total Annual Compensation (USD)
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                n = 168 — among currently employed respondents who shared salary
+              </div>
+              <div class="relative h-64"><canvas id="compensationChart"></canvas></div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm mt-5"
+          >
+            <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+              Job Search Duration (Unemployed Respondents)
+            </div>
+            <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+              n = 80 — how long respondents have been searching
+            </div>
+            <div class="relative h-48"><canvas id="jobSearchChart"></canvas></div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Hybrid leads:</strong> 45% of employed respondents work hybrid, with only 23% fully remote.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Early-career majority:</strong> 61% have 5 or fewer years of post-degree experience.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Salary spread:</strong> The largest salary band is &lt;$80K (39%), but 23% earn above $180K.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Active job seekers:</strong> 49% of unemployed respondents have been searching for 3 months or less.
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPANIES -->
+        <section class="survey-section hidden" id="s-companies">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Companies &amp; Organizations</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Where respondents work — sector, size, and strategic involvement.
+          </p>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Employer Type
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 178</div>
+              <div class="relative h-80"><canvas id="companyTypeChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Company Size (Employees)
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">n = 172</div>
+              <div class="relative h-64"><canvas id="companySizeChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Leadership Role
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                n = 179 employed respondents
+              </div>
+              <div class="relative h-48"><canvas id="leadershipChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Involved in Business / Strategic Planning
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                n = 43 — among those in leadership roles
+              </div>
+              <div class="relative h-48"><canvas id="strategicChart"></canvas></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Academia &amp; Biotech dominate:</strong> Together they account for 68% of employed respondents.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Polarized org sizes:</strong> Respondents skew toward both very small (&lt;100) and very large (&gt;10,000)
+              organizations.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Limited leadership pipeline:</strong> Only 24% hold leadership roles, and of those, 33% are not yet
+              involved in strategic planning.
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERTISE -->
+        <section class="survey-section hidden" id="s-expertise">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Professional Expertise</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Self-reported areas of expertise across all respondents (multi-select).
+          </p>
+          <div class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm">
+            <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+              Areas of Expertise
+            </div>
+            <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+              n = 258 — respondents could select multiple areas
+            </div>
+            <div class="relative h-80"><canvas id="expertiseChart"></canvas></div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Computational Biology is universal:</strong> 78% of respondents list it as an area of expertise.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>NGS Analysis nearly as common:</strong> 73% work with Next Generation Sequencing.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>AI emerging:</strong> 18% already list AI/ML as expertise — a rapidly growing skill set in bioinformatics.
+            </div>
+          </div>
+        </section>
+
+        <!-- COMMUNITY -->
+        <section class="survey-section hidden" id="s-community">
+          <h2 class="text-2xl font-bold text-default dark:text-slate-100 mb-1">Community &amp; Platforms</h2>
+          <p class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-7">
+            Social media and communication platforms used by respondents — key for event outreach.
+          </p>
+          <div class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm">
+            <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+              Platforms Used (Multi-select)
+            </div>
+            <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+              n = 252 — where respondents can be reached for event announcements
+            </div>
+            <ul class="s-bar-list list-none flex flex-col gap-2.5" id="platformBars"></ul>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Platform Reach
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                Percentage of respondents on each platform
+              </div>
+              <div class="relative h-64"><canvas id="platformChart"></canvas></div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl p-6 shadow-sm"
+            >
+              <div class="text-sm lg:text-base xl:text-lg font-bold text-default dark:text-slate-100 mb-1">
+                Targeting Role Level (Job Seekers)
+              </div>
+              <div class="text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 mb-5">
+                n = 77 — unemployed respondents
+              </div>
+              <div class="relative h-64"><canvas id="targetRoleChart"></canvas></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>LinkedIn is everything:</strong> 98% of respondents use LinkedIn — the primary channel for outreach
+              and event promotion.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>Bluesky rising:</strong> 13% use Bluesky, making it the #2 platform in the scientific community.
+            </div>
+            <div
+              class="flex-1 basis-52 border-l-4 border-primary bg-blue-50 dark:bg-slate-800 rounded-r-xl px-4 py-3.5 text-sm lg:text-base xl:text-lg text-slate-800 dark:text-slate-200"
+            >
+              <strong>X is fading:</strong> Only 9% use X (formerly Twitter), reflecting widespread exodus within the scientific
+              community.
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div
+      class="text-center text-sm lg:text-base xl:text-lg text-muted dark:text-slate-200 py-8 border-t border-gray-200 dark:border-slate-800"
+    >
+      Boston Women in Bioinformatics &mdash; Survey of Bioinformaticians in the US &nbsp;|&nbsp; 260 respondents
+      &nbsp;|&nbsp; Dashboard built with Chart.js
+    </div>
+  </div><!-- end #survey-dashboard -->
+</Layout>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script is:inline>
+  // ── GATE LOGIC ────────────────────────────────────────────────────
+  (function () {
+    const STORAGE_KEY = 'wib_survey_unlocked';
+    const gate = document.getElementById('survey-gate');
+    const dashboard = document.getElementById('survey-dashboard');
+
+    function unlock() {
+      localStorage.setItem(STORAGE_KEY, '1');
+      gate.classList.add('hidden');
+      dashboard.classList.remove('hidden');
+      // strip the param from the URL cleanly
+      const url = new URL(window.location.href);
+      url.searchParams.delete('unlocked');
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('unlocked') === 'true' || localStorage.getItem(STORAGE_KEY) === '1') {
+      unlock();
+    } else {
+      gate.classList.remove('hidden');
+    }
+
+    const unlockBtn = document.getElementById('unlock-btn');
+    if (unlockBtn) {
+      unlockBtn.addEventListener('click', unlock);
+    }
+  })();
+
+  // Dashboard uses cool tones (blue/purple/teal) as the default palette, with warm accent-warm
+  // orange reserved for the one place it's semantically meaningful (job-seeking status). Light
+  // mode uses pastel tints of the same tokens; dark mode uses the fully-saturated brand colors,
+  // since pastels wash out against a dark background.
+  const isDarkMode = document.documentElement.classList.contains('dark');
+  // TEAL and INDIGO fill the "residual/other" chart slots that would otherwise default to a
+  // flat gray — every slot gets an actual pastel hue instead of an achromatic one.
+  const PALETTE = {
+    light: {
+      WARM: '#f3a973',
+      BLUE: '#93c5fd',
+      SECONDARY: '#7dd3fc',
+      PURPLE: '#c4b5fd',
+      PINK: '#f9a8d4',
+      GOLD: '#e8d48a',
+      TEAL: '#5eead4',
+      INDIGO: '#a5b4fc',
+      SUCCESS: '#86efac',
+      WARNING: '#fdba74',
+      ERROR: '#f5a3a3',
+      INFO: '#a5d8ff',
+    },
+    dark: {
+      WARM: '#e36d1d',
+      BLUE: '#0161ef',
+      SECONDARY: '#0154cf',
+      PURPLE: '#6d28d9',
+      PINK: '#db2777',
+      GOLD: '#d4af37',
+      TEAL: '#0d9488',
+      INDIGO: '#4f46e5',
+      SUCCESS: '#22c55e',
+      WARNING: '#fb923c',
+      ERROR: '#e74c3c',
+      INFO: '#3b82f6',
+    },
+  };
+  const C = isDarkMode ? PALETTE.dark : PALETTE.light;
+  const { WARM, BLUE, SECONDARY, PURPLE, PINK, GOLD, TEAL, INDIGO, SUCCESS, WARNING, ERROR, INFO } = C;
+  const MULTI = [BLUE, PURPLE, SUCCESS, SECONDARY, GOLD, ERROR, INFO, INDIGO, PINK, TEAL];
+
+  // Legend/tick text and gridlines need an explicit theme-appropriate color — Chart.js's own
+  // default is a mid-gray that doesn't have enough contrast in either theme. Axis ticks get
+  // `tickColor` set directly (not just via Chart.defaults.color) so contrast is guaranteed
+  // regardless of Chart.js's default-resolution behavior.
+  let tickColor = isDarkMode ? '#e2e8f0' : '#334155';
+  Chart.defaults.color = tickColor;
+  const gridColor = isDarkMode ? '#334155' : '#f1f5f9';
+  const allCharts = [];
+
+  const DATA = {
+    gender: { labels: ['Female', 'Male', 'Other / Prefer not to say'], values: [209, 48, 3] },
+    location: {
+      labels: ['MA', 'CA', 'NY', 'IN', 'TX', 'NJ', 'PA', 'CT', 'GA', 'MD', 'DE', 'Other'],
+      values: [165, 20, 8, 7, 6, 5, 5, 4, 4, 3, 3, 25],
+    },
+    education: { labels: ['Bachelors', 'Masters', 'PhD', 'MD/PhD', 'Other'], values: [40, 102, 103, 10, 5] },
+    concentration: {
+      labels: [
+        'Bioinformatics & Computational Biology',
+        'Biology',
+        'Computer Science',
+        'Biophysics',
+        'Biotechnology',
+        'Biostatistics / Epidemiology',
+        'Other',
+      ],
+      values: [148, 57, 4, 3, 5, 5, 38],
+    },
+    gradYear: { labels: ['Before 2010', '2010–2019', '2020–2025'], values: [20, 78, 159] },
+    degreeOrigin: { labels: ['Within US', 'Outside US'], values: [207, 53] },
+    employment: { labels: ['Employed', 'Job Seeking'], values: [179, 81] },
+    jobType: { labels: ['Hybrid', 'In-person', 'Remote'], values: [81, 57, 41] },
+    experience: { labels: ['0–1 years', '2–5 years', '5–8 years', '8+ years'], values: [68, 91, 38, 63] },
+    compensation: {
+      labels: ['< $80K', '$80K–$120K', '$121K–$150K', '$151K–$180K', '$181K–$200K', '> $200K'],
+      values: [65, 39, 22, 4, 16, 22],
+    },
+    jobSearch: {
+      labels: ['0–3 months', '3–6 months', '6–9 months', '9–12 months', 'Over 1 year'],
+      values: [39, 21, 9, 5, 6],
+    },
+    companyType: {
+      labels: ['Academia', 'Biotech', 'Big Pharma', 'Consulting/CRO', 'Private Non-profit', 'Other'],
+      values: [68, 53, 18, 14, 13, 12],
+    },
+    companySize: { labels: ['0–100', '100–1,000', '1,000–10,000', 'Over 10,000'], values: [52, 31, 42, 47] },
+    leadership: { labels: ['No', 'Yes'], values: [136, 43] },
+    strategic: { labels: ['Yes', 'No'], values: [29, 14] },
+    targetRole: { labels: ['Individual Contributor', 'Manager / Director'], values: [66, 11] },
+    platforms: {
+      labels: ['LinkedIn', 'Bluesky', 'X (Twitter)', 'Instagram', 'Email', 'Other'],
+      values: [246, 32, 23, 7, 4, 8],
+    },
+    expertise: {
+      labels: [
+        'Computational Biology',
+        'NGS Analysis',
+        'Data Science',
+        'Management',
+        'Software Engineering',
+        'Biostatistics',
+        'AI / Machine Learning',
+        'Structural Biology',
+        'Statistical Genetics',
+      ],
+      values: [202, 189, 147, 47, 48, 48, 47, 35, 38],
+    },
+  };
+
+  function pct(v, t) {
+    return Math.round((v / t) * 100) + '%';
+  }
+
+  // Legend and axis text get more room on larger screens, so scale it up to match rather than
+  // leaving it fixed at the same small size on every viewport.
+  // Matches the text-sm/lg:text-base/xl:text-lg scale used for the rest of the dashboard's
+  // small text, so canvas-rendered chart text is the same size as the surrounding HTML.
+  function chartFontSize() {
+    const w = window.innerWidth;
+    if (w >= 1280) return 18;
+    if (w >= 1024) return 16;
+    return 14;
+  }
+
+  function donut(id, labels, values, colors) {
+    const total = values.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    const chart = new Chart(document.getElementById(id), {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{ data: values, backgroundColor: colors || MULTI, borderWidth: 2, borderColor: '#fff' }],
+      },
+      options: {
+        cutout: '60%',
+        plugins: {
+          legend: {
+            // 'right' squeezes long labels into a narrow side column and truncates them —
+            // 'bottom' gets the chart's full width to wrap across lines instead.
+            position: 'bottom',
+            labels: { color: tickColor, font: { size: chartFontSize() }, padding: 10, boxWidth: 14 },
+          },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return ' ' + ctx.label + ': ' + ctx.raw + ' (' + pct(ctx.raw, total) + ')';
+              },
+            },
+          },
+        },
+      },
+    });
+    allCharts.push(chart);
+  }
+  function hbar(id, labels, values, color) {
+    const chart = new Chart(document.getElementById(id), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ data: values, backgroundColor: color || BLUE, borderRadius: 6, borderSkipped: false }],
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return ' ' + ctx.raw;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: gridColor },
+            ticks: { color: tickColor, font: { size: chartFontSize() - 1 } },
+            beginAtZero: true,
+          },
+          y: { grid: { display: false }, ticks: { color: tickColor, font: { size: chartFontSize() } } },
+        },
+      },
+    });
+    allCharts.push(chart);
+  }
+  function vbar(id, labels, values, colors) {
+    const isArr = Array.isArray(colors);
+    const chart = new Chart(document.getElementById(id), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            data: values,
+            backgroundColor: isArr
+              ? colors
+              : values.map(function () {
+                  return colors || BLUE;
+                }),
+            borderRadius: 6,
+            borderSkipped: false,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return ' ' + ctx.raw;
+              },
+            },
+          },
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: tickColor, font: { size: chartFontSize() - 1 } } },
+          y: {
+            grid: { color: gridColor },
+            ticks: { color: tickColor, font: { size: chartFontSize() - 1 } },
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    allCharts.push(chart);
+  }
+  function barList(containerId, labels, values, color) {
+    const max = Math.max.apply(null, values);
+    const ul = document.getElementById(containerId);
+    labels.forEach(function (lbl, i) {
+      const li = document.createElement('li');
+      li.className = 's-bar-item text-sm lg:text-base xl:text-lg';
+      li.innerHTML =
+        '<div class="s-bl-label"><span>' +
+        lbl +
+        '</span><span>' +
+        values[i] +
+        '</span></div><div class="s-bar-track"><div class="s-bar-fill" style="width:' +
+        (values[i] / max) * 100 +
+        '%;background:' +
+        (color || BLUE) +
+        '"></div></div>';
+      ul.appendChild(li);
+    });
+  }
+
+  donut('genderChart', DATA.gender.labels, DATA.gender.values, [PINK, BLUE, PURPLE, TEAL]);
+  barList('locationBars', DATA.location.labels, DATA.location.values, BLUE);
+  vbar('educationChart', DATA.education.labels, DATA.education.values, MULTI);
+  donut('concentrationChart', DATA.concentration.labels, DATA.concentration.values);
+  vbar('gradYearChart', DATA.gradYear.labels, DATA.gradYear.values, ['#bfdbfe', '#93c5fd', '#60a5fa', BLUE]);
+  donut('degreeOriginChart', DATA.degreeOrigin.labels, DATA.degreeOrigin.values, [BLUE, TEAL]);
+  // Warm accent-warm orange is reserved for "Job Seeking" — the one place on this page where
+  // drawing attention with the warm accent is semantically appropriate (see COLOR_PALETTE.md).
+  donut('employmentChart', DATA.employment.labels, DATA.employment.values, [SUCCESS, WARM]);
+  donut('jobTypeChart', DATA.jobType.labels, DATA.jobType.values, [PURPLE, BLUE, INFO]);
+  vbar('experienceChart', DATA.experience.labels, DATA.experience.values, BLUE);
+  vbar('compensationChart', DATA.compensation.labels, DATA.compensation.values, [
+    '#bfdbfe',
+    '#93c5fd',
+    BLUE,
+    WARNING,
+    GOLD,
+    '#1e3a5f',
+  ]);
+  vbar('jobSearchChart', DATA.jobSearch.labels, DATA.jobSearch.values, BLUE);
+  donut('companyTypeChart', DATA.companyType.labels, DATA.companyType.values);
+  vbar('companySizeChart', DATA.companySize.labels, DATA.companySize.values, ['#bfdbfe', '#60a5fa', BLUE, '#1e3a5f']);
+  donut('leadershipChart', DATA.leadership.labels, DATA.leadership.values, [TEAL, GOLD]);
+  donut('strategicChart', DATA.strategic.labels, DATA.strategic.values, [SUCCESS, TEAL]);
+  donut('targetRoleChart', DATA.targetRole.labels, DATA.targetRole.values, [SECONDARY, BLUE, PURPLE]);
+  barList('platformBars', DATA.platforms.labels, DATA.platforms.values, BLUE);
+  hbar('platformChart', DATA.platforms.labels, DATA.platforms.values, BLUE);
+  hbar('expertiseChart', DATA.expertise.labels, DATA.expertise.values, BLUE);
+
+  // Chart dataset colors are baked in at creation, but legend/tick text color can be updated
+  // live so it stays legible if the user toggles theme without reloading the page. Legend and
+  // axis tick colors are set explicitly per-chart (not just via Chart.defaults.color), so each
+  // has to be reassigned individually here too.
+  new MutationObserver(function () {
+    const nowDark = document.documentElement.classList.contains('dark');
+    tickColor = nowDark ? '#e2e8f0' : '#334155';
+    Chart.defaults.color = tickColor;
+    allCharts.forEach(function (chart) {
+      const legendLabels = chart.options.plugins && chart.options.plugins.legend && chart.options.plugins.legend.labels;
+      if (legendLabels) legendLabels.color = tickColor;
+      const scales = chart.options.scales;
+      if (scales) {
+        if (scales.x) scales.x.ticks.color = tickColor;
+        if (scales.y) scales.y.ticks.color = tickColor;
+      }
+      chart.update();
+    });
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+  // Re-scale legend and axis text if the viewport crosses a breakpoint (resize or rotation),
+  // not just at initial load.
+  let resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      const size = chartFontSize();
+      allCharts.forEach(function (chart) {
+        const legendLabels =
+          chart.options.plugins && chart.options.plugins.legend && chart.options.plugins.legend.labels;
+        if (legendLabels) {
+          legendLabels.font.size = size;
+        }
+        const scales = chart.options.scales;
+        if (scales) {
+          // hbar puts category labels on the y-axis (full chartFontSize, matching donut legends);
+          // its numeric x-axis, and both axes on vbar, use one size smaller.
+          const isHbar = chart.options.indexAxis === 'y';
+          if (scales.x) scales.x.ticks.font.size = size - 1;
+          if (scales.y) scales.y.ticks.font.size = isHbar ? size : size - 1;
+        }
+        chart.update();
+      });
+    }, 150);
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function showSurveySection(id, btn) {
+    document.querySelectorAll('.survey-section').forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    document.querySelectorAll('.survey-tab-btn').forEach(function (b) {
+      b.classList.remove('active', 'text-accent-warm', 'border-accent-warm');
+      b.classList.add('text-muted', 'border-transparent');
+    });
+    document.getElementById(id).classList.remove('hidden');
+    btn.classList.add('active', 'text-accent-warm', 'border-accent-warm');
+    btn.classList.remove('text-muted', 'border-transparent');
+  }
+  // init first tab active state
+  (function () {
+    const first = document.querySelector('.survey-tab-btn');
+    if (first) {
+      first.classList.add('text-accent-warm', 'border-accent-warm');
+      first.classList.remove('text-muted', 'border-transparent');
+    }
+  })();
+</script>
+
+<style is:global>
+  .survey-hero-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .s-bl-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    color: inherit;
+  }
+  .s-bl-label span:last-child {
+    color: var(--aw-color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .s-bar-track {
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .dark .s-bar-track {
+    background: rgb(51 65 85);
+  }
+  .s-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+  }
+  /* Hide scrollbar on tab nav */
+  nav .scrollbar-none {
+    scrollbar-width: none;
+  }
+  nav .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+</style>

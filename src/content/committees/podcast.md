@@ -4,11 +4,11 @@ title: 'Podcast'
 description: 'Produces "A Coffee with CompBio," sharing conversations about career paths, challenges, and insights in computational biology.'
 icon: 'tabler:microphone'
 chairs:
-  - 'Sharvari Narendra'
   - 'Saba Nafees'
 members:
   - 'Amulya Shastry'
   - 'Dina Issakova'
+  - 'Sharvari Narendra'
 ---
 
 ## About

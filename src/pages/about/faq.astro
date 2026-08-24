@@ -1,6 +1,7 @@
 ---
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import { SLACK_INVITE_URL, LINKEDIN_URL, BLUESKY_URL, YOUTUBE_URL, GIVEBUTTER_URL } from '~/config/social';
 
 const metadata = {
   title: 'FAQ | Boston Women in Bioinformatics',
@@ -16,7 +17,7 @@ const faqs = [
     items: [
       {
         question: 'How do I join?',
-        answer: `There is no formal membership process. You can start by signing up for our ${link('/newsletter', 'newsletter')}, joining our ${link('https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ', 'Slack workspace')}, and following us on social media. Attending an event is the best way to get connected.`,
+        answer: `There is no formal membership process. You can start by signing up for our ${link('/newsletter', 'newsletter')}, joining our ${link(SLACK_INVITE_URL, 'Slack workspace')}, and following us on social media. Attending an event is the best way to get connected.`,
       },
       {
         question: "Can I join if I don't live in Boston?",
@@ -42,15 +43,15 @@ const faqs = [
       },
       {
         question: 'Are events recorded or is there a way to participate remotely?',
-        answer: `Some events are recorded and shared on our ${link('https://m.youtube.com/channel/UCzgmQ4uoTNq_MayiwAQ448Q', 'YouTube channel')}. Remote participation availability varies by event. Check the event page or our newsletter for details on each event.`,
+        answer: `Some events are recorded and shared on our ${link(YOUTUBE_URL, 'YouTube channel')}. Remote participation availability varies by event. Check the event page or our newsletter for details on each event.`,
       },
       {
         question: 'How do I find out about upcoming events?',
-        answer: `Subscribe to our ${link('/newsletter', 'newsletter')}, join our ${link('https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ', 'Slack workspace')}, follow us on ${link('https://www.linkedin.com/company/boston-women-in-bioinformatics', 'LinkedIn')} and ${link('https://bsky.app/profile/boston-wib.bsky.social', 'Bluesky')}, and check our ${link('/events', 'events page')}. We announce all upcoming events across these channels.`,
+        answer: `Subscribe to our ${link('/newsletter', 'newsletter')}, join our ${link(SLACK_INVITE_URL, 'Slack workspace')}, follow us on ${link(LINKEDIN_URL, 'LinkedIn')} and ${link(BLUESKY_URL, 'Bluesky')}, and check our ${link('/events', 'events page')}. We announce all upcoming events across these channels.`,
       },
       {
         question: 'How do I suggest a new event or program idea?',
-        answer: `We love community-driven ideas! Reach out to us through our ${link('https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ', 'Slack workspace')} or contact the Events Committee via ${link('mailto:events@boston-wib.org', 'events@boston-wib.org')}.`,
+        answer: `We love community-driven ideas! Reach out to us through our ${link(SLACK_INVITE_URL, 'Slack workspace')} or contact the Events Committee via ${link('mailto:events@boston-wib.org', 'events@boston-wib.org')}.`,
       },
     ],
   },
@@ -72,7 +73,7 @@ const faqs = [
     items: [
       {
         question: 'How do I sponsor BWIB?',
-        answer: `We partner with companies and organizations that share our commitment to equity in science and technology. Sponsorships help us keep events free and accessible. Reach out to us at ${link('mailto:communications@boston-wib.org', 'communications@boston-wib.org')} to learn about current sponsorship opportunities.`,
+        answer: `We partner with companies and organizations that share our commitment to equity in science and technology. Sponsorships help us keep events free and accessible. Reach out to us at ${link('mailto:sponsorship@boston-wib.org', 'sponsorship@boston-wib.org')} to learn about current sponsorship opportunities.`,
       },
       {
         question: 'How can I promote an event I am organizing for a different group?',
@@ -90,7 +91,7 @@ const faqs = [
       },
       {
         question: 'How do I donate?',
-        answer: `You can make a tax-deductible donation at ${link('https://givebutter.com/BWIBdonate', 'givebutter.com/BWIBdonate')}. Every contribution helps us keep our events free and our community growing.`,
+        answer: `You can make a tax-deductible donation at ${link(GIVEBUTTER_URL, 'givebutter.com/BWIBdonate')}. Every contribution helps us keep our events free and our community growing.`,
       },
     ],
   },

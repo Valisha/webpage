@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
 
 import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
-import { getPermalink } from '~/utils/permalinks';
+import { getPermalink, cleanSlug } from '~/utils/permalinks';
 
 // Helper function to remove import statements from markdown/MDX
 const cleanImports = (content: string): string => {
@@ -77,7 +77,7 @@ export const GET = async () => {
         content += post.data.excerpt ? `<p><em>${post.data.excerpt}</em></p>\n\n${processedHtml}` : processedHtml;
 
         return {
-          link: getPermalink(post.slug, 'post'),
+          link: getPermalink(cleanSlug(post.id), 'post'),
           title: post.data.title,
           content,
           pubDate: post.data.publishDate,

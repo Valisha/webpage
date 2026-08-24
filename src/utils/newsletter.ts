@@ -1,5 +1,5 @@
 import type { PaginateFunction } from 'astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Newsletter } from '~/types';
 import { APP_NEWSLETTER } from 'astrowind:config';
@@ -30,8 +30,8 @@ const generatePermalink = async ({ id, slug, publishDate }: { id: string; slug: 
 };
 
 const getNormalizedNewsletter = async (newsletter: CollectionEntry<'newsletter'>): Promise<Newsletter> => {
-  const { id, slug: rawSlug = '', data } = newsletter;
-  const { Content, remarkPluginFrontmatter } = await newsletter.render();
+  const { id, data } = newsletter;
+  const { Content, remarkPluginFrontmatter } = await render(newsletter);
 
   const {
     publishDate: rawPublishDate = new Date(),
@@ -47,7 +47,7 @@ const getNormalizedNewsletter = async (newsletter: CollectionEntry<'newsletter'>
     metadata = {},
   } = data;
 
-  const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
+  const slug = cleanSlug(id);
   const publishDate = new Date(rawPublishDate);
 
   // Normalize authors with fallback support

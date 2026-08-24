@@ -1,0 +1,35 @@
+[
+  { "name": "Lorena Pantano", "avatar": "/team/lpantano.jpg", "title": "Immediate Past President & Founder" },
+  { "name": "Yevgenia Khodor Tolan", "avatar": "/team/Yevgenia.jpg", "title": "President" },
+  {
+    "name": "Lina Faller",
+    "avatar": "/team/lina.jpg",
+    "title": "Vice President & Nominating and Governance Committee Chair"
+  },
+  {
+    "name": "Diveena Becker",
+    "avatar": "/team/diveena.jpg",
+    "title": "Treasurer & Finance Committee Chair & Events Committee Co-chair"
+  },
+  { "name": "Minita Shah", "avatar": "/team/Minita_Shah.jpg", "title": "Secretary" },
+  { "name": "Katie Hughes", "avatar": "/team/katie_sq.jpg", "title": "Board member" },
+  { "name": "Francine Camacho", "avatar": "/team/Francine_Camacho.jpg", "title": "Board member" },
+  { "name": "Liyang Diao", "avatar": "/team/liyang_diao.jpeg", "title": "Events Committee Co-chair" },
+  { "name": "Sakina Saif", "avatar": "/team/sakina_sq.jpg", "title": "Communications Committee Co-chair" },
+  {
+    "name": "Samantha Klasfeld",
+    "avatar": "/team/samanthaklasfeld.jpeg",
+    "title": "Communications Committee Co-chair"
+  },
+  {
+    "name": "Marissa Sumathipala",
+    "avatar": "/team/MarissaSumathipala.jpg",
+    "title": "Career Mentorship Committee Co-chair"
+  },
+  { "name": "Peili Zhang", "avatar": "/team/peili_zhang.jpg", "title": "Career Mentorship Committee Co-chair" },
+  { "name": "Emily Brodd", "avatar": "/team/emily_lachtara.jpeg", "title": "Sponsorship Committee Co-chair" },
+  { "name": "Prisni Rath", "avatar": "/team/prisni_rath.png", "title": "Sponsorship Committee Co-chair" },
+  { "name": "Amulya Shastry", "avatar": "/team/AmulyaShastry.jpeg", "title": "Enabling Advocacy Committee Co-chair" },
+  { "name": "Viveka Patil", "avatar": "/team/VivekaPatil.png", "title": "Enabling Advocacy Committee Co-chair" },
+  { "name": "Saba Nafees", "avatar": "/team/Saba_Nafees.jpg", "title": "Podcast Committee Co-chair" }
+]

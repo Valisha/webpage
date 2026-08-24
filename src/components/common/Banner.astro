@@ -1,0 +1,111 @@
+---
+// Banner component - Dismissable announcement banner. Pass a unique `id` when using more
+// than one on the same page so dismissal state doesn't collide between instances.
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  id?: string;
+  bgClass?: string;
+  textClass?: string;
+  showBlobs?: boolean;
+  linkHref?: string;
+  linkText?: string;
+  linkClass?: string;
+  arrowClass?: string;
+}
+
+const {
+  id = 'site-banner',
+  bgClass = 'bg-violet-100 dark:bg-slate-700',
+  textClass = 'text-accent dark:text-white',
+  showBlobs = true,
+  linkHref,
+  linkText,
+  linkClass = 'flex-none rounded-full bg-accent dark:bg-white px-3.5 py-1 text-sm font-semibold text-white dark:text-slate-900 shadow-xs hover:bg-gray-700 dark:hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900',
+  // Must match linkClass's text color pairing — the arrow sets its own color rather than
+  // relying on inheritance so it can't be dimmed by a differently-colored ancestor.
+  arrowClass = 'font-bold text-white dark:text-slate-900',
+} = Astro.props;
+---
+
+<div
+  id={id}
+  class={`relative isolate flex items-center gap-x-6 overflow-hidden ${bgClass} px-6 py-2 sm:mb-16 sm:px-3.5 sm:before:flex-1`}
+  data-banner
+  data-banner-id={id}
+>
+  {
+    showBlobs && (
+      <>
+        <div
+          class="absolute top-1/2 left-[max(-7rem,calc(50%-52rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+          aria-hidden="true"
+        >
+          <div
+            class="aspect-577/310 w-144.25 bg-linear-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"
+          />
+        </div>
+        <div
+          class="absolute top-1/2 left-[max(45rem,calc(50%+8rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+          aria-hidden="true"
+        >
+          <div
+            class="aspect-577/310 w-144.25 bg-linear-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"
+          />
+        </div>
+      </>
+    )
+  }
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+    <p class={`text-lg ${textClass}`}>
+      <slot />
+    </p>
+    {
+      linkHref && linkText && (
+        <a href={linkHref} class={linkClass}>
+          {linkText}{' '}
+          <span aria-hidden="true" class={arrowClass}>
+            &rarr;
+          </span>
+        </a>
+      )
+    }
+  </div>
+  <div class="flex flex-1 justify-end">
+    <button type="button" class="-m-3 p-3 focus-visible:-outline-offset-4" data-banner-dismiss>
+      <span class="sr-only">Dismiss</span>
+      <Icon name="tabler:x" class="w-5 h-5 text-gray-900 dark:text-slate-100" />
+    </button>
+  </div>
+</div>
+
+<script>
+  // Client-side script for banner dismiss functionality. Handles every [data-banner] instance
+  // on the page independently, keyed by its data-banner-id, so multiple banners can coexist.
+  function initBanner() {
+    document.querySelectorAll<HTMLElement>('[data-banner]').forEach((banner) => {
+      const bannerId = banner.dataset.bannerId || 'site-banner';
+      const storageKey = `bannerDismissed:${bannerId}`;
+      const dismissButton = banner.querySelector<HTMLElement>('[data-banner-dismiss]');
+
+      if (localStorage.getItem(storageKey) === 'true') {
+        banner.style.display = 'none';
+        return;
+      }
+
+      if (!dismissButton) return;
+      dismissButton.addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem(storageKey, 'true');
+      });
+    });
+  }
+
+  // Initialize on page load
+  initBanner();
+
+  // Re-initialize on view transitions (if using Astro view transitions)
+  document.addEventListener('astro:page-load', initBanner);
+</script>

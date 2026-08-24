@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { SITE } from '~/config/site/config.js';
+import { SLACK_INVITE_URL, LINKEDIN_URL } from '~/config/social';
 // import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -96,7 +97,7 @@ const metadata = {
         callToAction: {
           target: '_blank',
           text: 'https://boston-women-bioinfo.slack.com',
-          href: 'https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ',
+          href: SLACK_INVITE_URL,
           variant: 'link',
         },
       },
@@ -116,7 +117,7 @@ const metadata = {
         callToAction: {
           target: '_blank',
           text: 'Boston-area Women in Bioinformatics',
-          href: 'https://www.linkedin.com/company/boston-women-in-bioinformatics',
+          href: LINKEDIN_URL,
           variant: 'link',
         },
       },

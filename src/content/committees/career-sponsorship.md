@@ -4,10 +4,10 @@ title: 'Career Mentorship'
 description: 'Empowers women in bioinformatics to grow into leadership roles through focused mentorship, career advocacy, and access to professional networks.'
 icon: 'tabler:briefcase'
 chairs:
-  - 'Aysheh Alrfooh'
   - 'Peili Zhang'
-members:
   - 'Marissa Sumathipala'
+members:
+  - 'Aysheh Alrfooh'
 ---
 
 ## About

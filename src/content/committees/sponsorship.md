@@ -4,7 +4,7 @@ title: 'Sponsorship'
 description: 'Cultivates and stewards partnerships with industry, academia, and mission-aligned organizations to secure the financial support that powers BWIBs events, programs, and community initiatives.'
 icon: 'tabler:heart-handshake'
 chairs:
-  - 'Emily Lachtara'
+  - 'Emily Brodd'
   - 'Prisni Rath'
 members:
   - 'Lina Faller'

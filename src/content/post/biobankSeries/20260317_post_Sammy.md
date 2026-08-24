@@ -35,7 +35,7 @@ To query the data, you need a fully qualified dataset reference combining your p
 
 python:
 
-```{python}
+```python
 import dxpy
 import glob
 
@@ -53,7 +53,7 @@ dataset = f"{project_id}:{dispensed_dataset_id}"
 
 bash:
 
-```{bash}
+```bash
 # Get project ID
 project_id=$(dx env --json | jq -r '.project')
 

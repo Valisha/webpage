@@ -72,7 +72,7 @@ If you need a refresher on the two storage spaces, see the [hardware post](../02
 
 Start broad to learn the file structure, then narrow down. Running
 
-```{bash}
+```bash
 dx find data --name "ukb24311*.vcf.gz" --folder /Bulk | head
 ```
 
@@ -82,7 +82,7 @@ reveals that files follow the pattern:
 
 Yes, the path has spaces. Always quote it. Once you know that, you can narrow the search to a specific chromosome. Even then, WGS data is split across many batch files, so `| head` is still warranted:
 
-```{bash}
+```bash
 dx find data --name "ukb24311_c11_*.vcf.gz" --folder "/Bulk/DRAGEN WGS/ML-corrected DRAGEN population level WGS variants, pVCF format [500k release]/chr11" | head
 ```
 
@@ -123,7 +123,7 @@ A VCF is a giant matrix. Lines starting with `#` are metadata: pipeline details,
 
 That's exactly what the `--regions` flag does.
 
-```{bash}
+```bash
 FILE="/Bulk/DRAGEN WGS/ML-corrected DRAGEN population level WGS variants, pVCF format [500k release]/chr11/ukb24311_c11_b2366_v1.vcf.gz"
 URL=$(dx make_download_url "$FILE" --duration 1h)
 bcftools view "$URL" \

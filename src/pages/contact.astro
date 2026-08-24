@@ -1,6 +1,15 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { SITE } from '~/config/site/config.js';
+import {
+  SLACK_INVITE_URL,
+  LINKEDIN_URL,
+  INSTAGRAM_URL,
+  BLUESKY_URL,
+  YOUTUBE_URL,
+  GITHUB_URL,
+  TWITTER_URL,
+} from '~/config/social';
 import HeroText from '~/components/widgets/HeroText.astro';
 // import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -17,99 +26,84 @@ const metadata = {
 
   <HeroText title="Let's Connect!" />
 
-  <!-- <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our Slack and LinkedIn media. If not, we are happy to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="We will come back to you as soon as possible."
-  /> -->
-
-  <!-- Features2 Widget ************** -->
-
   <Features2
-    title="We are here to support you!"
-    columns={2}
+    title="Get in Touch"
+    columns={3}
     items={[
-      // {
-      //   title: 'General support',
-      //   description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      // },
-      // {
-      //   title: 'Contact sales',
-      //   description:
-      //     'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      // },
-      // {
-      //   title: 'Technical support',
-      //   description:
-      //     'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      // },
       {
-        title: 'Slack',
-        description: 'Join our Slack community',
-        icon: 'tabler:brand-slack',
-        callToAction: {
-          target: '_blank',
-          href: 'https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ',
-        },
-      },
-      {
-        title: 'Email',
-        description: 'Reach out to our team',
+        title: 'Questions and comments',
+        description: 'communications@boston-wib.org',
         icon: 'tabler:mail',
-        callToAction: {
-          target: '_blank',
-          href: 'mailto:communications@boston-wib.org',
-        },
+        callToAction: { href: 'mailto:communications@boston-wib.org' },
       },
       {
-        title: 'LinkedIn',
-        description: 'Connect with us on LinkedIn',
-        icon: 'tabler:brand-linkedin',
-        callToAction: {
-          target: '_blank',
-          href: 'https://www.linkedin.com/company/boston-women-in-bioinformatics',
-        },
+        title: 'Sponsorship Info',
+        description: 'sponsorship@boston-wib.org',
+        icon: 'tabler:briefcase',
+        callToAction: { href: 'mailto:sponsorship@boston-wib.org' },
       },
       {
-        title: 'Events Calendar',
-        description: 'View our upcoming events',
+        title: 'Partner with us on an event',
+        description: 'events@boston-wib.org',
         icon: 'tabler:calendar-event',
-        callToAction: {
-          target: '_blank',
-          href: 'https://luma.com/bwib',
-        },
+        callToAction: { href: 'mailto:events@boston-wib.org' },
       },
       {
         title: 'Promote Your Event',
         description: 'Have an event relevant to our community? Fill out our form!',
         icon: 'tabler:speakerphone',
-        callToAction: {
-          target: '_blank',
-          href: 'https://forms.gle/K2ofV58M1JPoYRX69',
-        },
-        classes: {
-          panel: 'sm:col-span-2',
-        },
+        callToAction: { target: '_blank', href: 'https://forms.gle/K2ofV58M1JPoYRX69' },
+        classes: { panel: 'sm:col-span-3' },
+      },
+    ]}
+  />
+
+  <Features2
+    title="Follow Us"
+    columns={3}
+    classes={{
+      items: {
+        panel:
+          'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-slate-900 dark:text-gray-100 p-4',
+        icon: 'w-8 h-8 mb-2 text-primary',
+        title: 'text-base font-semibold text-gray-900 dark:text-slate-100',
+      },
+    }}
+    items={[
+      {
+        title: 'Slack',
+        icon: 'tabler:brand-slack',
+        callToAction: { target: '_blank', href: SLACK_INVITE_URL },
+      },
+      {
+        title: 'LinkedIn',
+        icon: 'tabler:brand-linkedin',
+        callToAction: { target: '_blank', href: LINKEDIN_URL },
+      },
+      {
+        title: 'Instagram',
+        icon: 'tabler:brand-instagram',
+        callToAction: { target: '_blank', href: INSTAGRAM_URL },
+      },
+      {
+        title: 'Bluesky',
+        icon: 'tabler:brand-bluesky',
+        callToAction: { target: '_blank', href: BLUESKY_URL },
+      },
+      {
+        title: 'GitHub',
+        icon: 'tabler:brand-github',
+        callToAction: { target: '_blank', href: GITHUB_URL },
+      },
+      {
+        title: 'YouTube',
+        icon: 'tabler:brand-youtube',
+        callToAction: { target: '_blank', href: YOUTUBE_URL },
+      },
+      {
+        title: 'X (Twitter)',
+        icon: 'tabler:brand-x',
+        callToAction: { target: '_blank', href: TWITTER_URL },
       },
     ]}
   />

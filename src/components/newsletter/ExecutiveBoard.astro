@@ -1,0 +1,42 @@
+---
+// Renders an executive board photo grid. Defaults to the live board from
+// `exec` in `~/config/components/team`; pass `members` to render a frozen
+// per-issue snapshot instead (see Local Norm 23 in AGENTS.md).
+import { exec } from '~/config/components/team';
+
+export interface Props {
+  members?: Array<{ name: string; avatar?: string; title?: string }>;
+}
+
+const { members = exec.members } = Astro.props;
+---
+
+<div class="not-prose grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-x-1 gap-y-4 sm:gap-x-3 sm:gap-y-5">
+  {
+    members.map((member) => (
+      <div class="text-center text-gray-500 dark:text-slate-400">
+        {member.avatar && (
+          <img
+            class="mx-auto mb-1 w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover object-center"
+            src={member.avatar}
+            alt={`${member.name} headshot`}
+            width={80}
+            height={80}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <p class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">{member.name}</p>
+        {member.title && (
+          <p
+            class="text-xs sm:text-sm"
+            set:html={member.title
+              .split(' & ')
+              .map((line) => line.replace(/\bCo-chair\b/g, '<span style="white-space:nowrap">Co-chair</span>'))
+              .join('<br />')}
+          />
+        )}
+      </div>
+    ))
+  }
+</div>

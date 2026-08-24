@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
 
 import { SITE, APP_NEWSLETTER } from 'astrowind:config';
-import { getPermalink } from '~/utils/permalinks';
+import { getPermalink, cleanSlug } from '~/utils/permalinks';
 
 // Helper function to remove import statements from markdown/MDX
 const cleanImports = (content: string): string => {
@@ -40,7 +40,7 @@ export const GET = async () => {
 
     items: await Promise.all(
       newsletters.map(async (newsletter) => {
-        const cleanedBody = cleanImports(newsletter.body);
+        const cleanedBody = cleanImports(newsletter.body || '');
         const bodyHtml = await marked.parse(cleanedBody);
         const processedHtml = processImages(bodyHtml, import.meta.env.SITE);
 
@@ -62,7 +62,7 @@ export const GET = async () => {
           : processedHtml;
 
         return {
-          link: getPermalink(newsletter.slug, 'post'),
+          link: getPermalink(cleanSlug(newsletter.id), 'post'),
           title: newsletter.data.title,
           content,
           pubDate: newsletter.data.publishDate,

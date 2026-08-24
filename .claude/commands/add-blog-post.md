@@ -1,4 +1,4 @@
-Add a new blog post to the BWIB website. Blog posts live in `src/content/post/` (or a subdirectory depending on category/series).
+Add a new blog post to the BWIB website. Blog posts live in `src/content/post/` (or a subdirectory depending on category/series). This only scaffolds the file's frontmatter and location; use the `edit-blog-post` skill to write or revise the body content once the file exists.
 
 ## Step 1 — Gather Information
 
@@ -7,7 +7,7 @@ Ask the user for the following. Use `$ARGUMENTS` as context if the user already 
 **Required:**
 
 - `publishDate` — publication date in `YYYY-MM-DD` format. Posts dated in the future won't appear until that date.
-- `title` — name of the blog post
+- `title` — name of the blog post. For Member Spotlight posts, see the `edit-blog-post` skill for the exact title format.
 
 **Optional (omit from file if not provided):**
 
@@ -36,6 +36,7 @@ Ask the user for the following. Use `$ARGUMENTS` as context if the user already 
   - `description` — meta description for search engines
   - `canonical` — canonical URL if originally published elsewhere
   - `canonicalSource` — human-readable name of the canonical source (e.g. `"Work Life Decoded"`)
+  - Note: `metadata.image` does nothing — the Open Graph image is always derived from the top-level `image` field. Do not add `metadata.image`.
   - `ignoreTitleTemplate` — `true` to use the metadata title exactly without appending the site name
   - `robots` — `{ index: bool, follow: bool }`
 
@@ -43,7 +44,7 @@ Ask the user for the following. Use `$ARGUMENTS` as context if the user already 
 
 **File extension:**
 
-- `.mdx` if `category: Podcast` (MDX is needed for React icon imports — Spotify, Apple, RSS)
+- `.mdx` if `category: Podcast` (MDX is needed for React icon imports — Spotify, Apple, RSS; see the `edit-blog-post` skill for the embed pattern)
 - `.md` for all other categories
 
 **Subdirectory:**
@@ -59,21 +60,7 @@ Ask the user for the following. Use `$ARGUMENTS` as context if the user already 
 - Use the date from `publishDate`
 - Keep the description short and descriptive (e.g. `20260415_post_Dana.md`, `20260530_podcast_coffeeWithCompBio.mdx`)
 
-## Step 3 — Special Formatting Rules
-
-**Member Spotlight posts:**
-
-- Title format: `'Member Spotlight: First Last'` — use a Unicode non-breaking space (U+00A0) between first and last name so the name never wraps mid-name.
-
-**Podcast posts (.mdx):**
-
-- Include the Spotify embed iframe and Apple/Spotify/RSS listen links using React icons. Model after existing files in `src/content/post/coffeewithcompbio/`.
-- Import pattern at top of MDX body:
-  ```
-  import { FaBell, FaSpotify, FaApple } from 'react-icons/fa';
-  ```
-
-## Step 4 — Create the File
+## Step 3 — Create the File
 
 Write the file using only the fields that were provided. Omit optional fields the user did not supply.
 
@@ -112,13 +99,15 @@ metadata:
 MARKDOWN BODY
 ```
 
-## Step 5 — Run Prettier
+For the body content itself — special formatting for Member Spotlight and Podcast posts, and general Markdown conventions — use the `edit-blog-post` skill.
+
+## Step 4 — Run Prettier
 
 ```bash
 npx prettier --write src/content/post/{subdir}/{filename}
 ```
 
-## Step 6 — Output Git Instructions
+## Step 5 — Output Git Instructions
 
 Print the following commands for the user to run (do not run them automatically):
 

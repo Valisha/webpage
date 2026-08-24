@@ -1,6 +1,7 @@
 # build output
 dist/
 .output/
+public/tailwind-built.css
 
 # dependencies
 node_modules/
@@ -19,6 +20,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# R session history
+.Rhistory
+
 pnpm-lock.yaml
 
 .astro
@@ -26,3 +30,14 @@ src/content/meetups/meetup-event-export-20251201.json
 
 # Local Netlify folder
 .netlify
+
+# Claude Code local config
+.claude/
+
+# Survey response data — never commit raw data files
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*Responses*.json
+*responses*.json

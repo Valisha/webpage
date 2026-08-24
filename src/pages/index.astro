@@ -1,11 +1,12 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { SITE } from '~/config/site/config.js';
+import { SLACK_INVITE_URL, LINKEDIN_URL, INSTAGRAM_URL, LUMA_URL } from '~/config/social';
 // import Hero2 from '~/components/widgets/Hero2.astro'; // restore with mentorship section below
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 //import eventImg from '~/../public/photos/2025/WIB_10Year_group_photo1.jpg'; // adjust path as needed
-//import AddToCalendarButton from '~/components/AddToCalendarButton.tsx';
+//import AddToCalendarButton from '~/components/events/AddToCalendarButton.tsx';
 import Button from '~/components/ui/Button.astro';
 import Card from '~/components/ui/Card.astro';
 import UpcomingEvents from '~/components/widgets/UpcomingEvents.astro';
@@ -13,10 +14,11 @@ import { findLatestNewsletters } from '~/utils/newsletter';
 import { findLatestPosts } from '~/utils/blog';
 import { getCollection } from 'astro:content';
 import { APP_NEWSLETTER, APP_BLOG } from 'astrowind:config';
-import { getBlogPermalink } from '~/utils/permalinks';
+import { getBlogPermalink, getPermalink } from '~/utils/permalinks';
 import Image from '~/components/common/Image.astro';
 import NewBadge from '~/components/ui/NewBadge.astro';
 import NewsletterSignup from '~/components/newsletter/NewsletterSignup.astro';
+import { Icon } from 'astro-icon/components';
 
 const latestNewsletter = APP_NEWSLETTER.isEnabled ? (await findLatestNewsletters({ count: 1 }))[0] : null;
 const allLatestPosts = APP_BLOG.isEnabled ? (await findLatestPosts({ count: 20 })) || [] : [];
@@ -69,12 +71,49 @@ const metadata = {
   <section class="py-16 md:py-20 bg-white dark:bg-dark">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h1 class="text-4xl sm:text-5xl md:text-6xl dark:text-gray-100 font-bold mb-4 leading-tight">
-        Boston Women in
-        <span class="text-accent dark:text-gray-100 highlight">Bioinformatics</span>
+        Boston Women in <span class="text-accent dark:text-gray-100 highlight">Bioinformatics</span>
       </h1>
       <p class="text-lg sm:text-xl text-gray-700 dark:text-gray-300">
         Advancing Women in Bioinformatics by Creating Networks of Support, Collaboration, and Empowerment.
       </p>
+      <div class="flex justify-center gap-6 mt-6">
+        <a
+          href={SLACK_INVITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Register to join our Slack community"
+          class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+        >
+          <Icon name="tabler:brand-slack" class="w-8 h-8" />
+        </a>
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Connect with us on LinkedIn"
+          class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+        >
+          <Icon name="tabler:brand-linkedin" class="w-8 h-8" />
+        </a>
+        <a
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on Instagram"
+          class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+        >
+          <Icon name="tabler:brand-instagram" class="w-8 h-8" />
+        </a>
+        <a
+          href={LUMA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View our events on Luma"
+          class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+        >
+          <Icon name="tabler:calendar-event" class="w-8 h-8" />
+        </a>
+      </div>
     </div>
   </section>
 
@@ -158,14 +197,14 @@ const metadata = {
   }
 
   <!-- Upcoming Events Section -->
-  <section class="py-10 md:py-14 bg-white dark:bg-dark dark:text-gray-200">
+  <section class="py-10 md:py-14 bg-blue-50 dark:bg-blue-950 dark:text-gray-200">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <UpcomingEvents />
     </div>
   </section>
 
   <!-- From Our Committees Section (Newsletter + Podcast) -->
-  <section class="py-10 md:py-14 bg-gray-50 dark:bg-slate-800 dark:text-gray-200">
+  <section class="py-10 md:py-14 bg-white dark:bg-dark dark:text-gray-200">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8 text-center">Updates</h2>
       <div class="grid md:grid-cols-2 gap-8 md:items-stretch">
@@ -326,7 +365,7 @@ const metadata = {
   </section>
 
   <!-- Latest from Our Community Section (blogs + videos) -->
-  <section class="py-10 md:py-14 bg-white dark:bg-dark dark:text-gray-200">
+  <section class="py-10 md:py-14 bg-gray-50 dark:bg-slate-800 dark:text-gray-200">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-center">Latest from Our Community</h2>
       <p class="text-center text-gray-500 dark:text-gray-400 mb-8">
@@ -423,8 +462,48 @@ const metadata = {
     </div>
   </section>
 
+  <!-- Call for Speakers Section -->
+  <section class="py-10 md:py-14 bg-blue-50 dark:bg-blue-950 dark:text-gray-200">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="mx-auto max-w-xs w-full">
+          <img src="/photos/women_panel_ai.png" alt="An illustration for the panel of women" class="rounded-lg" />
+        </div>
+        <div>
+          <h2
+            class="text-3xl sm:text-4xl font-bold leading-tighter tracking-tighter font-heading text-gray-900 dark:text-slate-100 mb-3"
+          >
+            Call for Speakers
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+            The BWIB <a href="/about/committees/advocacy" class="text-primary dark:text-blue-400 hover:underline"
+              >Advocacy Committee</a
+            > is looking for women in the bioinformatics field to join our "Return to Work" panel in October 2026 (Date TBD).
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            We are seeking professionals to share their experiences after having taken a break in their careers, whether
+            it was voluntary or involuntary (also includes professionals who have taken maternity leaves). We are hoping
+            that your stories will help women going through the same journey right now and give them a direction on how
+            they can navigate their careers.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            Application deadline: <strong>August 31, 2026 at 11:59 pm EST</strong>
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScctmpIoZAUm_UgvOlpy2sovMamLJf7FsFjZxl9fLL9liFkUw/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Apply to Be a Panelist
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Community Survey Section -->
-  <section class="py-16 md:py-20 bg-blue-50 dark:bg-blue-950 border-l-4 border-primary">
+  <section class="py-16 md:py-20 bg-white dark:bg-dark">
     <CallToAction
       title="Help Us Close the Gender Gap<br/><span class='text-2xl font-normal'>(and win a $25 gift card!)</span>"
       actions={[
@@ -439,8 +518,8 @@ const metadata = {
     >
       <Fragment slot="subtitle">
         <p class="text-gray-700 dark:text-slate-300 mb-6">
-          Our data already shows it: <span class="text-primary dark:text-white font-semibold">21% of men</span> vs. <span
-            class="text-primary dark:text-white font-semibold">14% of women</span
+          Our data already shows it: <span class="text-accent dark:text-white font-semibold">21% of men</span> vs. <span
+            class="text-accent dark:text-white font-semibold">14% of women</span
           > report holding leadership positions.<br />
           Help us build the evidence base our community deserves.
         </p>
@@ -451,6 +530,14 @@ const metadata = {
         </ul>
       </Fragment>
     </CallToAction>
+    <p class="text-center mt-2">
+      <a
+        href={`${getPermalink('/resources/survey-results')}?unlocked=true`}
+        class="text-sm font-semibold text-primary dark:text-sky-300 hover:underline"
+      >
+        I've already submitted my data →
+      </a>
+    </p>
   </section>
 
   <!-- Let's Connect Section -->
@@ -482,11 +569,11 @@ const metadata = {
         // },
         {
           title: 'Slack',
-          description: 'Join our Slack community',
+          description: 'Register to join our Slack community',
           icon: 'tabler:brand-slack',
           callToAction: {
             target: '_blank',
-            href: 'https://join.slack.com/t/boston-women-bioinfo/shared_invite/zt-2y78bc7n7-W4TE7kuz8HGz4pzShTeZMQ',
+            href: SLACK_INVITE_URL,
           },
         },
         {
@@ -504,7 +591,7 @@ const metadata = {
           icon: 'tabler:brand-linkedin',
           callToAction: {
             target: '_blank',
-            href: 'https://www.linkedin.com/company/boston-women-in-bioinformatics',
+            href: LINKEDIN_URL,
           },
         },
         {
@@ -513,7 +600,7 @@ const metadata = {
           icon: 'tabler:calendar-event',
           callToAction: {
             target: '_blank',
-            href: 'https://luma.com/bwib',
+            href: LUMA_URL,
           },
         },
       ]}
